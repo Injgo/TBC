@@ -40,12 +40,17 @@ class ViewController: UIViewController {
  
     @IBAction func calculation(_ sender: UIButton) {
         
+        var array = [Int]()
+        if let num1 = number1.text, let num2 = number2.text, let num3 = number3.text {
+            array.append(Int(num1) ?? 0)
+            array.append(Int(num2) ?? 0)
+            array.append(Int(num3) ?? 0)
+        }
         
-        let array: [Int] = [Int(number1.text!)!, Int(number2.text!)!, Int(number3.text!)!]
         if let text =  textField.text{
             switch text {
             case "maximum":
-                resultLabel.text = "\(array.max()!)"
+                resultLabel.text = "\(array.max() ?? 0)"
             case "average" :
                 let avg = array.map{$0}.reduce(0, + ) / array.count
                 resultLabel.text = "\(avg)"
